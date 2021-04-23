@@ -1,5 +1,6 @@
 {
   "expo": {
+    "packagerOpts": { "port": 30001 },
     "name": "nativebase2",
     "slug": "nativebase2",
     "version": "1.0.0",
