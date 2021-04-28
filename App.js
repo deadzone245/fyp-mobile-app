@@ -5,9 +5,11 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts, Roboto_500Medium } from "@expo-google-fonts/roboto";
 import TaskScreen from "./screens/TaskScreen.js";
-import TodayTodoListScreen from "./screens/TodayTodoListScreen";
+import TodayTodoListScreen from "./screens/TodayTodoList/TodayTodoListScreen";
 import SideBar from "./screens/customDrawer.js";
 import { Icon } from "native-base";
+import TodoListStackScreen from "./screens/TodayTodoList/index.js";
+import TaskList from "./screens/TasksScreen/TaskList";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -52,11 +54,11 @@ function MyDrawer() {
           ),
         }}
         name="TaskScreen"
-        component={TaskScreen}
+        component={TaskList}
       />
       <Drawer.Screen
         name="Domains"
-        component={TodayTodoListScreen}
+        component={TodoListStackScreen}
         options={{
           drawerIcon: ({ focused, color, size }) => (
             <Icon

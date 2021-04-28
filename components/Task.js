@@ -11,15 +11,26 @@ import {
   View,
 } from "native-base";
 import { StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/core";
 
 const Task = (props) => {
+  const navigation = useNavigation();
   return (
     <Card>
       <CardItem>
         <Body style={styles.item}>
           <View style={styles.itemLeft}>
             <Text style={styles.itemIndex}>{props.index} </Text>
-            <Text style={styles.itemText}>{props.title}</Text>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("TaskSummary", {
+                  id: props.index,
+                })
+              }
+            >
+              <Text style={styles.itemText}>{props.title}</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.itemRight}>
             <Radio selected={false} />

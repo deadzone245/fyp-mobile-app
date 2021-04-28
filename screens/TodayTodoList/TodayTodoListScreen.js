@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import GenericScreen from "./GenericScreen.js";
+import GenericScreen from "../GenericScreen.js";
 import {
   Container,
   Header,
@@ -17,8 +17,8 @@ import {
 import TabOne from "./tabOne";
 import TabTwo from "./tabTwo";
 import TabThree from "./tabThree";
-import TodaysTaskScreen from "./TodaysTaskScreen";
-import TodaysAppointmentScreens from "./TodaysAppointmentScreen";
+import TodaysTaskScreen from "../TodaysTaskScreen";
+import TodaysAppointmentScreens from "../TodaysAppointmentScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 /* const Tab = createBottomTabNavigator();
@@ -54,6 +54,9 @@ export default TodayTodoListScreen;
  */
 
 export const TodayTodoListScreen = ({ navigation }) => {
+  const HandleTaskSummary = () => {
+    navigation.navigate("TaskSummary");
+  };
   return (
     <Container>
       <Header hasTabs>
@@ -76,7 +79,7 @@ export const TodayTodoListScreen = ({ navigation }) => {
             </TabHeading>
           }
         >
-          <TabOne />
+          <TabOne TaskSummary={HandleTaskSummary} />
         </Tab>
         <Tab
           heading={

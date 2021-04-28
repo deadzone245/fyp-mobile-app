@@ -28,13 +28,14 @@ import {
   Item,
   TouchableOpacity,
 } from "native-base";
-import Task from "../components/Task";
+import Task from "../../components/Task";
 import { color } from "react-native-reanimated";
+import { useNavigation } from "@react-navigation/core";
 
 const indexCounter = 15;
 
 const TaskForm = () => {
-  const [date, setDate] = useState(new Date(1598051730000));
+  const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
   const [selectedValueDomain, setSelectedValueDomain] = useState("Home");
@@ -155,7 +156,7 @@ const TaskForm = () => {
   );
 };
 
-const TabOne = () => {
+const TabOne = ({ TaskSummary }) => {
   const refRBSheet = useRef();
   const [selectedRole, setSelectedRole] = useState();
   const [selectedDomain, setSelectedDomain] = useState();
@@ -177,7 +178,7 @@ const TabOne = () => {
     { title: "StateTask14", index: "14" },
     { title: "StateTask15", index: "15" },
   ]);
-
+  const navigation = useNavigation();
   const hadleAddTask = () => {
     setTaskItems([...taskItems, task]);
     setTask(null);
@@ -185,6 +186,11 @@ const TabOne = () => {
   return (
     <Container>
       <Content padder>
+        <View>
+          <Button onPress={() => navigation.navigate("TaskSummary")}>
+            <Text>Press this to go to Task summary page</Text>
+          </Button>
+        </View>
         <FlatList
           data={taskItems}
           renderItem={({ item }) => (
