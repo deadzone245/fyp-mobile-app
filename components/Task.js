@@ -24,8 +24,11 @@ const Task = (props) => {
             <Text style={styles.itemIndex}>{props.index} </Text>
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate("TaskSummary", {
-                  id: props.index,
+                navigation.navigate("TaskStackScreen", {
+                  screen: "TaskSummary",
+                  params: {
+                    id: props.index,
+                  },
                 })
               }
             >

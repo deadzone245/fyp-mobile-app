@@ -10,6 +10,7 @@ import SideBar from "./screens/customDrawer.js";
 import { Icon } from "native-base";
 import TodoListStackScreen from "./screens/TodayTodoList/index.js";
 import TaskList from "./screens/TasksScreen/TaskList";
+import TaskListStackScreen from "./screens/TasksScreen/index.js";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -53,8 +54,8 @@ function MyDrawer() {
             />
           ),
         }}
-        name="TaskScreen"
-        component={TaskList}
+        name="TaskStackScreen"
+        component={TaskListStackScreen}
       />
       <Drawer.Screen
         name="Domains"
