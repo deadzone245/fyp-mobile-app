@@ -186,16 +186,9 @@ const TabOne = ({ TaskSummary }) => {
   return (
     <Container>
       <Content padder>
-        <View>
-          <Button onPress={() => navigation.navigate("TaskSummary")}>
-            <Text>Press this to go to Task summary page</Text>
-          </Button>
-        </View>
         <FlatList
           data={taskItems}
-          renderItem={({ item }) => (
-            <Task title={item.title} index={item.index} />
-          )}
+          renderItem={({ item }) => <Task task={item} />}
           keyExtractor={(item) => item.index}
         />
         {/*         <Task index={1} title="Pick up keys from office " />

@@ -12,27 +12,31 @@ import {
 } from "native-base";
 import { StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/core";
-
-const Task = (props) => {
+import {
+  CommonActions,
+  StackActions,
+  useNavigation,
+} from "@react-navigation/core";
+const Task = ({ task }) => {
   const navigation = useNavigation();
   return (
     <Card>
       <CardItem>
         <Body style={styles.item}>
           <View style={styles.itemLeft}>
-            <Text style={styles.itemIndex}>{props.index} </Text>
+            <Text style={styles.itemIndex}>{task.index} </Text>
             <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("TaskStackScreen", {
+              onPress={() => {
+                console.log("going to MiscellaneousScreenStack->TaskSummary");
+                navigation.navigate("MiscellaneousScreenStack", {
                   screen: "TaskSummary",
                   params: {
-                    id: props.index,
+                    task: task,
                   },
-                })
-              }
+                });
+              }}
             >
-              <Text style={styles.itemText}>{props.title}</Text>
+              <Text style={styles.itemText}>{task.title}</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.itemRight}>

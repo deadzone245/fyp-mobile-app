@@ -185,12 +185,18 @@ const TaskList = () => {
   };
   return (
     <Container>
-      <Content padder>
-        <View>
-          <Button onPress={() => navigation.navigate("TaskSummary")}>
-            <Text>Press this to go to Task summary page</Text>
+      <Header>
+        <Left>
+          <Button transparent onPress={() => navigation.openDrawer()}>
+            <Icon name="menu" />
           </Button>
-        </View>
+        </Left>
+        <Body>
+          <Title>All Tasks List</Title>
+        </Body>
+        <Right />
+      </Header>
+      <Content padder>
         <FlatList
           data={taskItems}
           renderItem={({ item }) => (

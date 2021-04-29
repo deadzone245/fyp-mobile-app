@@ -8,10 +8,11 @@ import TaskScreen from "./screens/TaskScreen.js";
 import TodayTodoListScreen from "./screens/TodayTodoList/TodayTodoListScreen";
 import SideBar from "./screens/customDrawer.js";
 import { Icon } from "native-base";
-import TodoListStackScreen from "./screens/TodayTodoList/index.js";
-import TaskList from "./screens/TasksScreen/TaskList";
-import TaskListStackScreen from "./screens/TasksScreen/index.js";
 
+import { createStackNavigator } from "@react-navigation/stack";
+import TaskSummary from "./screens/TasksScreen/TaskSummary.js";
+import TaskEditForm from "./screens/TasksScreen/TaskEditForm.js";
+import TaskList from "./screens/TasksScreen/TaskList";
 export default function App() {
   let [fontsLoaded] = useFonts({
     Roboto_500Medium,
@@ -28,6 +29,21 @@ export default function App() {
 }
 
 const Drawer = createDrawerNavigator();
+
+const Stack = createStackNavigator();
+
+const MiscellaneousScreenStack = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="TaskSummary" component={TaskSummary} />
+      <Stack.Screen name="TaskEditForm" component={TaskEditForm} />
+    </Stack.Navigator>
+  );
+};
 
 function MyDrawer() {
   return (
@@ -54,12 +70,12 @@ function MyDrawer() {
             />
           ),
         }}
-        name="TaskStackScreen"
-        component={TaskListStackScreen}
+        name="All tasks"
+        component={TaskList}
       />
       <Drawer.Screen
         name="Domains"
-        component={TodoListStackScreen}
+        component={TodayTodoListScreen}
         options={{
           drawerIcon: ({ focused, color, size }) => (
             <Icon
@@ -113,6 +129,10 @@ function MyDrawer() {
             />
           ),
         }}
+      />
+      <Drawer.Screen
+        name="MiscellaneousScreenStack"
+        component={MiscellaneousScreenStack}
       />
     </Drawer.Navigator>
   );

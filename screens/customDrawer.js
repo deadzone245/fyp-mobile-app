@@ -17,6 +17,11 @@ import { Avatar } from "react-native-paper";
 };
  */
 function SideBar(props) {
+  const { state, ...rest } = props;
+  const newState = { ...state };
+  newState.routes = newState.routes.filter(
+    (item) => item.name !== "MiscellaneousScreenStack"
+  );
   return (
     <Container>
       <Header style={{ borderBottomWidth: 0, height: 106 }}>
@@ -36,7 +41,7 @@ function SideBar(props) {
       </Header>
       <Content>
         <DrawerContentScrollView {...props}>
-          <DrawerItemList {...props} />
+          <DrawerItemList state={newState} {...rest} />
         </DrawerContentScrollView>
       </Content>
     </Container>
