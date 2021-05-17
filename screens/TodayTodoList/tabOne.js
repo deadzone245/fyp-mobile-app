@@ -243,7 +243,8 @@ const TabOne = ({ TaskSummary }) => {
                   <Input placeholder="Task" />
                 </Item>
                 <Item regular>
-                  <Input placeholder="Description" />
+                  <Input placeholder="Description" const [selectedRole, setSelectedRole] = useState();
+  const [selectedDomain, setSelectedDomain] = useState(); />
                 </Item>
                 <Item picker style={{ flexDirection: "row" }}>
                   <Text>Domain: </Text>

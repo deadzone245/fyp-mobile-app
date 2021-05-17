@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   itemText: {
-    maxWidth: "85%",
+    maxWidth: "100%",
   },
   itemRight: {
     flexDirection: "row",

@@ -1,5 +1,8 @@
 {
   "expo": {
+      "owner":"fyp_spms",
+    "name": "fyp",
+    "slug": "fyp",
     "packagerOpts": { "port": 30001 },
     "name": "nativebase2",
     "slug": "nativebase2",

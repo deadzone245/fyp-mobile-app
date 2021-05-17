@@ -34,7 +34,7 @@ const TaskSummary = ({ route }) => {
           </Button>
         </Left>
         <Body>
-          <Title>All Task List</Title>
+          <Title>Task detail</Title>
         </Body>
 
         <Right>

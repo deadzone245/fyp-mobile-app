@@ -156,27 +156,44 @@ const TaskForm = () => {
   );
 };
 
+const TaskListHeader = () => {
+  const navigation = useNavigation();
+  return (
+    <Header>
+      <Left>
+        <Button transparent onPress={() => navigation.openDrawer()}>
+          <Icon name="menu" />
+        </Button>
+      </Left>
+      <Body>
+        <Title>All Tasks List</Title>
+      </Body>
+      <Right />
+    </Header>
+  );
+};
+
 const TaskList = () => {
   const refRBSheet = useRef();
   const [selectedRole, setSelectedRole] = useState();
   const [selectedDomain, setSelectedDomain] = useState();
   const [task, setTask] = useState();
   const [taskItems, setTaskItems] = useState([
-    { title: "StateTask1", index: "1" },
-    { title: "StateTask2", index: "2" },
-    { title: "StateTask3", index: "3" },
-    { title: "StateTask4", index: "4" },
-    { title: "StateTask5", index: "5" },
-    { title: "StateTask6", index: "6" },
-    { title: "StateTask7", index: "7" },
-    { title: "StateTask8", index: "8" },
-    { title: "StateTask9", index: "9" },
-    { title: "StateTask10", index: "10" },
-    { title: "StateTask11", index: "11" },
-    { title: "StateTask12", index: "12" },
-    { title: "StateTask13", index: "13" },
-    { title: "StateTask14", index: "14" },
-    { title: "StateTask15", index: "15" },
+    { title: "Task 1", index: "1" },
+    { title: "Task 2", index: "2" },
+    { title: "Task 3", index: "3" },
+    { title: "Task 4", index: "4" },
+    { title: "Task 5", index: "5" },
+    { title: "Task 6", index: "6" },
+    { title: "Task 7", index: "7" },
+    { title: "Task 8", index: "8" },
+    { title: "Task 9", index: "9" },
+    { title: "Task 10", index: "10" },
+    { title: "Task 11", index: "11" },
+    { title: "Task 12", index: "12" },
+    { title: "Task 13", index: "13" },
+    { title: "Task 14", index: "14" },
+    { title: "Task 15", index: "15" },
   ]);
   const navigation = useNavigation();
   const hadleAddTask = () => {
@@ -185,23 +202,10 @@ const TaskList = () => {
   };
   return (
     <Container>
-      <Header>
-        <Left>
-          <Button transparent onPress={() => navigation.openDrawer()}>
-            <Icon name="menu" />
-          </Button>
-        </Left>
-        <Body>
-          <Title>All Tasks List</Title>
-        </Body>
-        <Right />
-      </Header>
       <Content padder>
         <FlatList
           data={taskItems}
-          renderItem={({ item }) => (
-            <Task title={item.title} index={item.index} />
-          )}
+          renderItem={({ item }) => <Task task={item} />}
           keyExtractor={(item) => item.index}
         />
         {/*         <Task index={1} title="Pick up keys from office " />

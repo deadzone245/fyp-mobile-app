@@ -12,7 +12,11 @@ import { Icon } from "native-base";
 import { createStackNavigator } from "@react-navigation/stack";
 import TaskSummary from "./screens/TasksScreen/TaskSummary.js";
 import TaskEditForm from "./screens/TasksScreen/TaskEditForm.js";
-import TaskList from "./screens/TasksScreen/TaskList";
+import TaskListScreen from "./screens/TasksScreen/index";
+import DomainList from "./screens/DomainScreen/DomainList.js";
+import DomainSummary from "./screens/DomainScreen/DomainSummary.js";
+import RoleListScreen from "./screens/RoleScreen/index.js";
+import RoleSummary from "./screens/RoleScreen/RoleSummary.js";
 export default function App() {
   let [fontsLoaded] = useFonts({
     Roboto_500Medium,
@@ -41,6 +45,8 @@ const MiscellaneousScreenStack = () => {
     >
       <Stack.Screen name="TaskSummary" component={TaskSummary} />
       <Stack.Screen name="TaskEditForm" component={TaskEditForm} />
+      <Stack.Screen name="DomainSummary" component={DomainSummary} />
+      <Stack.Screen name="RoleSummary" component={RoleSummary} />
     </Stack.Navigator>
   );
 };
@@ -71,11 +77,11 @@ function MyDrawer() {
           ),
         }}
         name="All tasks"
-        component={TaskList}
+        component={TaskListScreen}
       />
       <Drawer.Screen
         name="Domains"
-        component={TodayTodoListScreen}
+        component={DomainList}
         options={{
           drawerIcon: ({ focused, color, size }) => (
             <Icon
@@ -87,7 +93,7 @@ function MyDrawer() {
       />
       <Drawer.Screen
         name="Roles"
-        component={TodayTodoListScreen}
+        component={RoleListScreen}
         options={{
           drawerIcon: ({ focused, color, size }) => (
             <Icon
