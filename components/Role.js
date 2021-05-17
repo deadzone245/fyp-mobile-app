@@ -22,10 +22,8 @@ const Role = ({ role }) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        console.log("going to MiscellaneousScreenStack->RoleSummary");
-        navigation.navigate("MiscellaneousScreenStack", {
-          screen: "RoleSummary",
-        });
+        console.log("going to RoleSummary");
+        navigation.navigate("RoleSummary");
       }}
     >
       <Card>

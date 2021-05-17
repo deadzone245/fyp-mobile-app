@@ -32,11 +32,7 @@ const DomainList = ({ navigation }) => {
         <Right>
           <Button
             transparent
-            onPress={() =>
-              navigation.navigate("MiscellaneousScreenStack", {
-                screen: "DomainSummary",
-              })
-            }
+            onPress={() => navigation.navigate("MiscellaneousScreenStack")}
           >
             <Icon name="create" />
           </Button>

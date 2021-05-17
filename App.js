@@ -27,7 +27,7 @@ export default function App() {
   }
   return (
     <NavigationContainer>
-      <MyDrawer />
+      <MainStack />
     </NavigationContainer>
   );
 }
@@ -36,17 +36,26 @@ const Drawer = createDrawerNavigator();
 
 const Stack = createStackNavigator();
 
-const MiscellaneousScreenStack = () => {
+const MainStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
     >
+      <Stack.Screen name="DrawerScreen" component={MyDrawer} />
       <Stack.Screen name="TaskSummary" component={TaskSummary} />
       <Stack.Screen name="TaskEditForm" component={TaskEditForm} />
       <Stack.Screen name="DomainSummary" component={DomainSummary} />
       <Stack.Screen name="RoleSummary" component={RoleSummary} />
+
+      <Drawer.Screen name="Todays Todo List" component={TodayTodoListScreen} />
+      <Drawer.Screen name="All tasks" component={TaskListScreen} />
+      <Drawer.Screen name="Domains" component={DomainList} />
+      <Drawer.Screen name="Roles" component={RoleListScreen} />
+      <Drawer.Screen name="Visions" component={TodayTodoListScreen} />
+      <Drawer.Screen name="Goals" component={TodayTodoListScreen} />
+      <Drawer.Screen name="Projects" component={TodayTodoListScreen} />
     </Stack.Navigator>
   );
 };
@@ -135,10 +144,6 @@ function MyDrawer() {
             />
           ),
         }}
-      />
-      <Drawer.Screen
-        name="MiscellaneousScreenStack"
-        component={MiscellaneousScreenStack}
       />
     </Drawer.Navigator>
   );

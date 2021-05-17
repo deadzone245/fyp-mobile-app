@@ -27,13 +27,8 @@ const Task = ({ task }) => {
             <Text style={styles.itemIndex}>{task.index} </Text>
             <TouchableOpacity
               onPress={() => {
-                console.log("going to MiscellaneousScreenStack->TaskSummary");
-                navigation.navigate("MiscellaneousScreenStack", {
-                  screen: "TaskSummary",
-                  params: {
-                    task: task,
-                  },
-                });
+                console.log("going to TaskSummary");
+                navigation.navigate("TaskSummary", { task: task });
               }}
             >
               <Text style={styles.itemText}>{task.title}</Text>

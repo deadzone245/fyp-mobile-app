@@ -22,10 +22,8 @@ const Domain = ({ domain }) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        console.log("going to MiscellaneousScreenStack->DomainSummary");
-        navigation.navigate("MiscellaneousScreenStack", {
-          screen: "DomainSummary",
-        });
+        console.log("DomainSummary");
+        navigation.navigate("DomainSummary");
       }}
     >
       <Card>
