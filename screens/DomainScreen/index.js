@@ -14,15 +14,13 @@ import {
   Text,
 } from "native-base";
 import React from "react";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { ActivityIndicator, FlatList, StyleSheet } from "react-native";
 import Domain from "../../components/Domain";
-import PageHeader from "../../components/PageHeader"
-import DomainTraverse from "./DomainTraverse"
+import PageHeader from "../../components/PageHeader";
+import DomainTraverse from "./DomainTraverse";
 
-const DomainList = ({ navigation }) => {
-
-
+const DomainListScreen = ({ navigation }) => {
   // useEffect(() => {
   //   setLoading(true);
   //   fetch('http://18.139.228.56:8000/DomainJson/')
@@ -31,14 +29,12 @@ const DomainList = ({ navigation }) => {
   //     .then(json => {
   //       setDomains(json.body);
   //       setLoading(false);
-  //     })        
+  //     })
   // }
   //   , []);
 
-
-
   return (
-    <Container >
+    <Container>
       <PageHeader title="All domains list" />
 
       <DomainTraverse />
@@ -49,7 +45,7 @@ const DomainList = ({ navigation }) => {
             full
             info
             style={{ flexDirection: "row", justifyContent: "center" }}
-            onPress={() => { }}
+            onPress={() => {}}
           >
             <Icon name="add-outline" style={{ color: "white" }} />
             <Text style={{ color: "white" }}>Add Domain</Text>
@@ -60,4 +56,4 @@ const DomainList = ({ navigation }) => {
   );
 };
 
-export default DomainList;
+export default DomainListScreen;

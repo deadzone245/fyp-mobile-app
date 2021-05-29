@@ -13,7 +13,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import TaskSummary from "./screens/TasksScreen/TaskSummary.js";
 import TaskEditForm from "./screens/TasksScreen/TaskEditForm.js";
 import TaskListScreen from "./screens/TasksScreen/index";
-import DomainList from "./screens/DomainScreen/DomainList.js";
+import DomainListScreen from "./screens/DomainScreen/index.js";
 import DomainSummary from "./screens/DomainScreen/DomainSummary.js";
 import RoleListScreen from "./screens/RoleScreen/index.js";
 import RoleSummary from "./screens/RoleScreen/RoleSummary.js";
@@ -51,7 +51,7 @@ const MainStack = () => {
 
       <Drawer.Screen name="Todays Todo List" component={TodayTodoListScreen} />
       <Drawer.Screen name="All tasks" component={TaskListScreen} />
-      <Drawer.Screen name="Domains" component={DomainList} />
+      <Drawer.Screen name="Domains" component={DomainListScreen} />
       <Drawer.Screen name="Roles" component={RoleListScreen} />
       <Drawer.Screen name="Visions" component={TodayTodoListScreen} />
       <Drawer.Screen name="Goals" component={TodayTodoListScreen} />
@@ -90,7 +90,7 @@ function MyDrawer() {
       />
       <Drawer.Screen
         name="Domains"
-        component={DomainList}
+        component={DomainListScreen}
         options={{
           drawerIcon: ({ focused, color, size }) => (
             <Icon

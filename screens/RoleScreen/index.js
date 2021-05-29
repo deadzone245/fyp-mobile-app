@@ -10,21 +10,12 @@ import {
   Icon,
 } from "native-base";
 import RoleList from "./RoleList";
+import PageHeader from "../../components/PageHeader";
 
 const RoleListScreen = ({ navigation }) => {
   return (
     <Container>
-      <Header>
-        <Left>
-          <Button transparent onPress={() => navigation.openDrawer()}>
-            <Icon name="menu" />
-          </Button>
-        </Left>
-        <Body>
-          <Title>All Roles</Title>
-        </Body>
-        <Right />
-      </Header>
+      <PageHeader title="All Roles" />
       <RoleList />
     </Container>
   );
