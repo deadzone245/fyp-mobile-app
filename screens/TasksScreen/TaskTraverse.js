@@ -39,11 +39,11 @@ const DomainTraverse = ({ navigation }) => {
 
     if (loading)
         return (
-         
+            // <Content padder>
                 <View style={[styles.container, styles.horizontal]}>
                     <ActivityIndicator size="large" color="#00ff00" />
                 </View>
-          
+            // </Content>
 
         );
     return (
