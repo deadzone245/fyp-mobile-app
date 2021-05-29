@@ -14,48 +14,34 @@ import {
   Text,
 } from "native-base";
 import React from "react";
-import {} from "react-native";
+import { useState, useEffect } from 'react';
+import { ActivityIndicator, FlatList, StyleSheet } from "react-native";
 import Domain from "../../components/Domain";
+import PageHeader from "../../components/PageHeader"
+import DomainTraverse from "./DomainTraverse"
 
 const DomainList = ({ navigation }) => {
+
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   fetch('http://18.139.228.56:8000/DomainJson/')
+
+  //     .then(response => response.json())
+  //     .then(json => {
+  //       setDomains(json.body);
+  //       setLoading(false);
+  //     })        
+  // }
+  //   , []);
+
+
+
   return (
-    <Container>
-      <Header>
-        <Left>
-          <Button transparent onPress={() => navigation.openDrawer()}>
-            <Icon name="menu" />
-          </Button>
-        </Left>
-        <Body>
-          <Title>All Domains List</Title>
-        </Body>
-        <Right>
-          <Button
-            transparent
-            onPress={() => navigation.navigate("MiscellaneousScreenStack")}
-          >
-            <Icon name="create" />
-          </Button>
-        </Right>
-      </Header>
-      <Content padder>
-        <Domain
-          domain={{
-            title: "Work",
-            description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu mauris eget leo iaculis sodales ut id nibh. Duis ac augue dignissim, tempus lorem id, lacinia ipsum. Aenean at mi sed libero porta scelerisque. Proin nec justo lacinia, mattis nisl eget, tempus nisi. Proin egestas cursus velit et congue. ",
-            color: "#343a40",
-          }}
-        />
-        <Domain
-          domain={{
-            title: "Home",
-            description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu mauris eget leo iaculis sodales ut id nibh. Duis ac augue dignissim, tempus lorem id, lacinia ipsum. Aenean at mi sed libero porta scelerisque. Proin nec justo lacinia, mattis nisl eget, tempus nisi. Proin egestas cursus velit et congue. ",
-            color: "#17a2b8",
-          }}
-        />
-      </Content>
+    <Container >
+      <PageHeader title="All domains list" />
+
+      <DomainTraverse />
       <Footer>
         <FooterTab>
           <Button
@@ -63,7 +49,7 @@ const DomainList = ({ navigation }) => {
             full
             info
             style={{ flexDirection: "row", justifyContent: "center" }}
-            onPress={() => {}}
+            onPress={() => { }}
           >
             <Icon name="add-outline" style={{ color: "white" }} />
             <Text style={{ color: "white" }}>Add Domain</Text>

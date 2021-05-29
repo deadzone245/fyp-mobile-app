@@ -10,21 +10,12 @@ import {
   Icon,
 } from "native-base";
 import TaskList from "./TaskList";
+import PageHeader from "../../components/PageHeader";
 
 const TaskListScreen = ({ navigation }) => {
   return (
     <Container>
-      <Header>
-        <Left>
-          <Button transparent onPress={() => navigation.openDrawer()}>
-            <Icon name="menu" />
-          </Button>
-        </Left>
-        <Body>
-          <Title>All Tasks</Title>
-        </Body>
-        <Right></Right>
-      </Header>
+      <PageHeader title="All tasks"/>
       <TaskList />
     </Container>
   );

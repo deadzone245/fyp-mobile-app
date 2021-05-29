@@ -17,6 +17,8 @@ import {
 import React from "react";
 import { StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+
+
 const Domain = ({ domain }) => {
   const navigation = useNavigation();
   return (
@@ -31,16 +33,16 @@ const Domain = ({ domain }) => {
           style={{
             justifyContent: "center",
             flexDirection: "row",
-            backgroundColor: domain.color,
+            backgroundColor: "grey",
           }}
           header
           bordered
         >
-          <Text style={styles.cardHeaderText}>{domain.title}</Text>
+          <Text style={styles.cardHeaderText}>{domain.Name}</Text>
         </CardItem>
         <CardItem bordered>
           <Body>
-            <Text>{domain.description}</Text>
+            <Text>{domain.Description}</Text>
           </Body>
         </CardItem>
       </Card>
