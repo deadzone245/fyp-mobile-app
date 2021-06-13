@@ -24,14 +24,14 @@ const Task = ({ task }) => {
       <CardItem>
         <Body style={styles.item}>
           <View style={styles.itemLeft}>
-            <Text style={styles.itemIndex}>{task.index} </Text>
+            <Text style={styles.itemIndex}>{task.pk} </Text>
             <TouchableOpacity
               onPress={() => {
                 console.log("going to TaskSummary");
                 navigation.navigate("TaskSummary", { task: task });
               }}
             >
-              <Text style={styles.itemText}>{task.title}</Text>
+              <Text style={styles.itemText}>{task.Action}</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.itemRight}>

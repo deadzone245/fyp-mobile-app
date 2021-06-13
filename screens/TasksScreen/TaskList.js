@@ -1,6 +1,6 @@
-import React, { createRef, useRef, useState } from "react";
+import React, { createRef, useRef, useState ,useEffect} from "react";
 import ActionSheet from "react-native-actions-sheet";
-import { StyleSheet, TextInput, Picker, FlatList } from "react-native";
+import { StyleSheet, TextInput, Picker, FlatList,ActivityIndicator } from "react-native";
 import RBSheet from "react-native-raw-bottom-sheet";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { format } from "date-fns";
@@ -178,54 +178,44 @@ const TaskList = () => {
   const [selectedRole, setSelectedRole] = useState();
   const [selectedDomain, setSelectedDomain] = useState();
   const [task, setTask] = useState();
-  const [taskItems, setTaskItems] = useState([
-    { title: "Task 1", index: "1" },
-    { title: "Task 2", index: "2" },
-    { title: "Task 3", index: "3" },
-    { title: "Task 4", index: "4" },
-    { title: "Task 5", index: "5" },
-    { title: "Task 6", index: "6" },
-    { title: "Task 7", index: "7" },
-    { title: "Task 8", index: "8" },
-    { title: "Task 9", index: "9" },
-    { title: "Task 10", index: "10" },
-    { title: "Task 11", index: "11" },
-    { title: "Task 12", index: "12" },
-    { title: "Task 13", index: "13" },
-    { title: "Task 14", index: "14" },
-    { title: "Task 15", index: "15" },
-  ]);
+  const [loading, setLoading] = useState(true);
+  const [taskItems, setTaskItems] = useState([]);
   const navigation = useNavigation();
   const hadleAddTask = () => {
     setTaskItems([...taskItems, task]);
     setTask(null);
   };
+  useEffect(() => {
+    setLoading(true);
+    fetch('http://18.139.228.56:8000/TaskJson/')
+
+      .then(response => response.json())
+      .then(json => {
+        setTaskItems(json.body);
+        setLoading(false);
+        console.log(json.body);
+      })
+  }
+    , []);
+
+  if (loading)
+    return (
+      <View style={[styles.container, styles.horizontal]}>
+        <ActivityIndicator size="large" color="#00ff00" />
+      </View>
+    );
   return (
     <Container>
       <Content padder>
         <FlatList
           data={taskItems}
-          renderItem={({ item }) => <Task task={item} />}
-          keyExtractor={(item) => item.index}
+          renderItem={({ item }) => <Task task={item.fields} />}
+          keyExtractor={(task) => task.pk}
         />
-        {/*         <Task index={1} title="Pick up keys from office " />
-        <Task index={2} title="Task 2" />
-        <Task index={3} title="Task 3" />
-        <Task index={4} title="Task 4" />
-        <Task index={5} title="Task 5" />
-        <Task index={7} title="Task 7" />
-        <Task index={8} title="Task 8" />
-        <Task index={9} title="Task 9" />
-        <Task index={10} title="Task 10" />
-        <Task index={11} title="Task 11" />
-        <Task index={12} title="Task 12" />
-        <Task index={13} title="Task 13" />
-        <Task index={14} title="Task 14" />
-        <Task index={15} title="Task 15" />
-        <Task index={16} title="Task 16" />
-        <Task index={17} title="Task 17" />
-        <Task index={18} title="Task 18" /> */}
+
       </Content>
+      
+            
 
       <Footer style={{ backgroundColor: "#fff" }}>
         <FooterTab>
@@ -333,4 +323,15 @@ const TaskList = () => {
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center"
+  },
+  horizontal: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 10
+  }
+});
 export default TaskList;
