@@ -17,6 +17,10 @@ import DomainListScreen from "./screens/DomainScreen/index.js";
 import DomainSummary from "./screens/DomainScreen/DomainSummary.js";
 import RoleListScreen from "./screens/RoleScreen/index.js";
 import RoleSummary from "./screens/RoleScreen/RoleSummary.js";
+import LoginScreen from "./screens/AuthScreens/LoginScreen.js";
+
+const isLoggedIn = true;
+
 export default function App() {
   let [fontsLoaded] = useFonts({
     Roboto_500Medium,
@@ -25,11 +29,15 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  return (
-    <NavigationContainer>
-      <MainStack />
-    </NavigationContainer>
-  );
+
+  if (!isLoggedIn) return <LoginScreen />;
+
+  if (isLoggedIn)
+    return (
+      <NavigationContainer>
+        <MainStack />
+      </NavigationContainer>
+    );
 }
 
 const Drawer = createDrawerNavigator();

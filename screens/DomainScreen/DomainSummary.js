@@ -31,7 +31,9 @@ import Goals from "./Goals";
 import Projects from "./Projects";
 import TaskList from "../TasksScreen/TaskList";
 import RoleList from "../RoleScreen/RoleList";
-const DomainSummary = ({ navigation }) => {
+const DomainSummary = ({ navigation, route }) => {
+  const { domain } = route.params;
+
   return (
     <Container>
       <Header hasTabs>
@@ -41,7 +43,7 @@ const DomainSummary = ({ navigation }) => {
           </Button>
         </Left>
         <Body>
-          <Title>Work Domain</Title>
+          <Title> Domain</Title>
         </Body>
         <Right />
       </Header>
@@ -55,7 +57,7 @@ const DomainSummary = ({ navigation }) => {
             </TabHeading>
           }
         >
-          <DomainDetails />
+          <DomainDetails domain={domain} />
         </Tab>
         <Tab
           heading={

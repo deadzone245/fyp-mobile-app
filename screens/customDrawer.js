@@ -2,7 +2,18 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
-import { Body, Container, Content, H3, Header, Icon, Left } from "native-base";
+import {
+  Body,
+  Container,
+  Content,
+  H3,
+  Header,
+  Icon,
+  Left,
+  Button,
+  Footer,
+  FooterTab,
+} from "native-base";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Avatar } from "react-native-paper";
@@ -39,6 +50,13 @@ function SideBar(props) {
           <DrawerItemList {...props} />
         </DrawerContentScrollView>
       </Content>
+      <Footer>
+        <FooterTab>
+          <Button full>
+            <Text style={{ color: "white" }}>Sign Out</Text>
+          </Button>
+        </FooterTab>
+      </Footer>
     </Container>
   );
 }

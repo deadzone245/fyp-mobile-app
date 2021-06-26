@@ -18,14 +18,15 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-
 const Domain = ({ domain }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       onPress={() => {
         console.log("DomainSummary");
-        navigation.navigate("DomainSummary");
+        navigation.navigate("DomainSummary", {
+          domain: domain,
+        });
       }}
     >
       <Card>

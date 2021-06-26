@@ -48,24 +48,18 @@ const DomainTraverse = ({ navigation }) => {
         <ActivityIndicator size="large" color="#00ff00" />
       </View>
     );
-  return (
-    // <Content padder>
-    <View style={[styles.container, styles.horizontal]}>
-      <ActivityIndicator size="large" color="#00ff00" />
-    </View>
-    // </Content>
-  );
-  return (
-    <Content padder>
-      <View>
-        <FlatList
-          data={domains}
-          keyExtractor={(domain) => domain.pk}
-          renderItem={({ item }) => <Domain domain={item.fields} />}
-        />
-      </View>
-    </Content>
-  );
+  else
+    return (
+      <Content padder>
+        <View>
+          <FlatList
+            data={domains}
+            keyExtractor={(domain) => domain.pk}
+            renderItem={({ item }) => <Domain domain={item.fields} />}
+          />
+        </View>
+      </Content>
+    );
 };
 
 const styles = StyleSheet.create({

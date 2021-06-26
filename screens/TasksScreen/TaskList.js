@@ -1,6 +1,12 @@
-import React, { createRef, useRef, useState ,useEffect} from "react";
+import React, { createRef, useRef, useState, useEffect } from "react";
 import ActionSheet from "react-native-actions-sheet";
-import { StyleSheet, TextInput, Picker, FlatList,ActivityIndicator } from "react-native";
+import {
+  StyleSheet,
+  TextInput,
+  Picker,
+  FlatList,
+  ActivityIndicator,
+} from "react-native";
 import RBSheet from "react-native-raw-bottom-sheet";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { format } from "date-fns";
@@ -187,16 +193,14 @@ const TaskList = () => {
   };
   useEffect(() => {
     setLoading(true);
-    fetch('http://18.139.228.56:8000/TaskJson/')
-
-      .then(response => response.json())
-      .then(json => {
+    fetch("http://18.139.228.56:8080/TaskJson/")
+      .then((response) => response.json())
+      .then((json) => {
         setTaskItems(json.body);
         setLoading(false);
         console.log(json.body);
-      })
-  }
-    , []);
+      });
+  }, []);
 
   if (loading)
     return (
@@ -204,47 +208,45 @@ const TaskList = () => {
         <ActivityIndicator size="large" color="#00ff00" />
       </View>
     );
-  return (
-    <Container>
-      <Content padder>
-        <FlatList
-          data={taskItems}
-          renderItem={({ item }) => <Task task={item.fields} />}
-          keyExtractor={(task) => task.pk}
-        />
+  else
+    return (
+      <Container>
+        <Content padder>
+          <FlatList
+            data={taskItems}
+            renderItem={({ item }) => <Task task={item.fields} />}
+            keyExtractor={(task) => task.pk}
+          />
+        </Content>
 
-      </Content>
-      
-            
-
-      <Footer style={{ backgroundColor: "#fff" }}>
-        <FooterTab>
-          <Button
-            iconLeft
-            full
-            info
-            style={{ flexDirection: "row", justifyContent: "center" }}
-            onPress={() => refRBSheet.current.open()}
-          >
-            <Icon name="add-outline" style={{ color: "white" }} />
-            <Text style={{ color: "white" }}>Add Task</Text>
-          </Button>
-          <RBSheet
-            ref={refRBSheet}
-            closeOnDragDown={true}
-            closeOnPressMask={true}
-            height={300}
-            customStyles={{
-              wrapper: {
-                backgroundColor: "#00000055",
-              },
-              draggableIcon: {
-                backgroundColor: "#000",
-              },
-            }}
-          >
-            <TaskForm />
-            {/* <View>
+        <Footer style={{ backgroundColor: "#fff" }}>
+          <FooterTab>
+            <Button
+              iconLeft
+              full
+              info
+              style={{ flexDirection: "row", justifyContent: "center" }}
+              onPress={() => refRBSheet.current.open()}
+            >
+              <Icon name="add-outline" style={{ color: "white" }} />
+              <Text style={{ color: "white" }}>Add Task</Text>
+            </Button>
+            <RBSheet
+              ref={refRBSheet}
+              closeOnDragDown={true}
+              closeOnPressMask={true}
+              height={300}
+              customStyles={{
+                wrapper: {
+                  backgroundColor: "#00000055",
+                },
+                draggableIcon: {
+                  backgroundColor: "#000",
+                },
+              }}
+            >
+              <TaskForm />
+              {/* <View>
               <Form>
                 <Item regular>
                   <Input placeholder="Task" />
@@ -316,22 +318,22 @@ const TaskList = () => {
                 </Button>
               </View>
             </View> */}
-          </RBSheet>
-        </FooterTab>
-      </Footer>
-    </Container>
-  );
+            </RBSheet>
+          </FooterTab>
+        </Footer>
+      </Container>
+    );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   horizontal: {
     flexDirection: "row",
     justifyContent: "space-around",
-    padding: 10
-  }
+    padding: 10,
+  },
 });
 export default TaskList;
